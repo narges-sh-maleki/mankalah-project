@@ -1,4 +1,4 @@
-package com.sh.maleki.mankalah.web.model;
+package com.sh.maleki.mankalah.web.exceptionHandler;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

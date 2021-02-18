@@ -1,15 +1,12 @@
 package com.sh.maleki.mankalah.service;
 
+import com.sh.maleki.common.GameDto;
+import com.sh.maleki.common.Player;
 import com.sh.maleki.mankalah.domain.Game;
 import com.sh.maleki.mankalah.repositories.GameRepository;
 import com.sh.maleki.mankalah.web.mapper.GameMapper;
-import com.sh.maleki.mankalah.web.model.GameDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -49,7 +46,7 @@ class GameServiceImplTest {
 
         game = Game.builder().turn(PLAYER1).build();
 
-        gameDto = GameDto.builder().turn(com.sh.maleki.mankalah.web.model.Player.PLAYER1).build();
+        gameDto = GameDto.builder().turn(Player.PLAYER1).build();
     }
 
     @Test

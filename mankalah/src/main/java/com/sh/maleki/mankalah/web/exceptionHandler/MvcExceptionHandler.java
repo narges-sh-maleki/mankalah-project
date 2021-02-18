@@ -1,14 +1,12 @@
 package com.sh.maleki.mankalah.web.exceptionHandler;
 
 import com.sh.maleki.mankalah.exceptions.BusinessException;
-import com.sh.maleki.mankalah.web.model.ExceptionDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 

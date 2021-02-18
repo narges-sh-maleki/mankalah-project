@@ -1,15 +1,12 @@
 package com.sh.maleki.mankalah.web.controller;
 
 import com.sh.maleki.mankalah.service.GameService;
-import com.sh.maleki.mankalah.web.model.GameDto;
 import lombok.RequiredArgsConstructor;
+import com.sh.maleki.common.GameDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @RestController

@@ -1,4 +1,4 @@
-package com.sh.maleki.mankalah.web.model;
+package model;
 
 public enum Player {
     PLAYER1,PLAYER2

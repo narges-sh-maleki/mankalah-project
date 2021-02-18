@@ -1,5 +1,6 @@
 package com.sh.maleki.mankalah.service;
 
+import com.sh.maleki.common.GameDto;
 import com.sh.maleki.mankalah.domain.Game;
 import com.sh.maleki.mankalah.domain.GameWinner;
 import com.sh.maleki.mankalah.domain.Player;
@@ -7,13 +8,11 @@ import com.sh.maleki.mankalah.exceptions.BusinessException;
 import com.sh.maleki.mankalah.exceptions.ExceptionCodes;
 import com.sh.maleki.mankalah.repositories.GameRepository;
 import com.sh.maleki.mankalah.web.mapper.GameMapper;
-import com.sh.maleki.mankalah.web.model.GameDto;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;

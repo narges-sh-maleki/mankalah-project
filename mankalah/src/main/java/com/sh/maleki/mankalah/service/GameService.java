@@ -1,7 +1,6 @@
 package com.sh.maleki.mankalah.service;
 
-
-import com.sh.maleki.mankalah.web.model.GameDto;
+import com.sh.maleki.common.GameDto;
 
 import java.util.UUID;
 

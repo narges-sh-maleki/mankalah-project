@@ -1,4 +1,4 @@
-package com.sh.maleki.mankalah.web.model;
+package model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;

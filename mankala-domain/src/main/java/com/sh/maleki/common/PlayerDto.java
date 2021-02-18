@@ -1,4 +1,4 @@
-package com.sh.maleki.mankalah.web.model;
+package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
