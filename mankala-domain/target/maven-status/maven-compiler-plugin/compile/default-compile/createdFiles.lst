@@ -1,0 +1,6 @@
+com\sh\maleki\common\GameDto.class
+com\sh\maleki\common\Player.class
+com\sh\maleki\common\PlayerDto$PlayerDtoBuilder.class
+com\sh\maleki\common\GameWinner.class
+com\sh\maleki\common\GameDto$GameDtoBuilder.class
+com\sh\maleki\common\PlayerDto.class
