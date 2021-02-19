@@ -35,7 +35,7 @@ public class Game  {
     @Builder.Default
     private GameWinner gameWinner = GameWinner.UNKNOWN;
 
-    //Optimistic Lock to avoid cuncurrency problem
+    //Optimistic Lock to avoid concurrency problem
     @Version
     private Long version;
 

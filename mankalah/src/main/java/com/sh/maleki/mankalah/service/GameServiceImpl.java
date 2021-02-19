@@ -70,6 +70,7 @@ public class GameServiceImpl implements GameService {
         //Integer[] pits = Arrays.copyOf(game.getPits(),game.getPits().length)  ;
 
         Integer[] pits = game.getPits();
+
         if (!game.getGameWinner().equals(GameWinner.UNKNOWN))
             throw new BusinessException(ExceptionCodes.INVALID_GAME, "Game Winner: " + game.getGameWinner().toString());
         if (!isCurrPlayerPit(turn, pitId))
@@ -111,6 +112,9 @@ public class GameServiceImpl implements GameService {
 
         Game savedGame = gameRepository.save(game);
         return gameMapper.GameToGameDto(savedGame);
+
+   //     gameRepository.save(game);
+   //     return gameMapper.GameToGameDto(game);
     }
 
     private Boolean isGameOver(Integer[] pits) {
@@ -184,7 +188,6 @@ public class GameServiceImpl implements GameService {
         nextValidPit = (nextValidPit > kalah2) ? 0 : nextValidPit;
         return nextValidPit;
     }
-
 
     private boolean isCurrPlayerPit(Player curTurn, Integer pitId) {
         if (curTurn == Player.PLAYER1)
