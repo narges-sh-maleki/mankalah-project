@@ -4,6 +4,7 @@ import com.sh.maleki.common.GameDto;
 import com.sh.maleki.common.Player;
 import com.sh.maleki.mankalah.domain.Game;
 import com.sh.maleki.mankalah.domain.GameWinner;
+import com.sh.maleki.mankalah.exceptions.BusinessException;
 import com.sh.maleki.mankalah.repositories.GameRepository;
 import com.sh.maleki.mankalah.web.mapper.GameMapper;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -30,6 +32,7 @@ import java.util.stream.Stream;
 import static com.sh.maleki.mankalah.domain.Player.PLAYER1;
 import static com.sh.maleki.mankalah.domain.Player.PLAYER2;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -65,6 +68,10 @@ class GameServiceImplTest {
 
     @BeforeAll
     static void beforeAll() {
+        System.out.println("**************kalah1:" + kalah1);
+        System.out.println("**************kalah2:" + kalah2);
+        System.out.println("**************stones:" + stones);
+
         initGameObjects();
     }
 
@@ -72,10 +79,6 @@ class GameServiceImplTest {
     void setUp() {
 
         System.out.println("**************Active profile:" + Arrays.toString(env.getActiveProfiles()) + "************" );
-        System.out.println("**************kalah1:" + kalah1);
-        System.out.println("**************kalah2:" + kalah2);
-        System.out.println("**************stones:" + stones);
-
        // gameDto = localMapper.GameToGameDto(game);
 
 
@@ -98,31 +101,73 @@ class GameServiceImplTest {
 
 
     @ParameterizedTest
-    @MethodSource("provideSomeParams")
+    @MethodSource("provideSomePlayConsecutiveMoves")
     void makeMoveHappyTest(Integer inputPit, Integer[] expectedPits, com.sh.maleki.mankalah.domain.Player expectedPlayer) {
         //given
         UUID uuid = game.getGameId();
-        Integer pitId = inputPit;
         when(gameRepository.findById(any(UUID.class))).thenReturn(Optional.of(game));
         final ArgumentCaptor<Game> captor = ArgumentCaptor.forClass(Game.class);
         when(gameRepository.save(captor.capture())).thenReturn(game);
-        Integer afterMovePits[] = expectedPits;//new Integer[]{0,7,7,7,7,7,1,6,6,6,6,6,6,0};
 
         //when
-        gameService.makeMove(uuid,pitId);
+        gameService.makeMove(uuid, inputPit);
 
         //then
         System.out.println(captor.getValue().toString());
         //since the final result is fetched from a *MOCKED* repository,
         // we cannot assert the real output, so we capture the Game object before save operation
         // and assert that.
-        assertThat(captor.getValue().getPits()).isEqualTo(afterMovePits);
+        assertThat(captor.getValue().getPits()).isEqualTo(expectedPits);
         assertThat(captor.getValue().getGameWinner()).isEqualTo(GameWinner.UNKNOWN);
         assertThat(captor.getValue().getTurn()).isEqualTo(expectedPlayer);
 
     }
 
-    private static Stream<Arguments> provideSomeParams() {
+   @ParameterizedTest
+   @MethodSource("provideSomeWrongTurnParams")
+   void makeMoveWrongTurnTest(Integer[] inputPits, com.sh.maleki.mankalah.domain.Player inputTurn, Integer inputPitId) {
+        //given
+       game = Game.builder()
+               .gameId(UUID.randomUUID())
+               .turn(inputTurn)
+               .pits(inputPits)
+               .gameWinner(GameWinner.UNKNOWN)
+               .build();
+
+        UUID uuid = game.getGameId();
+       when(gameRepository.findById(any(UUID.class))).thenReturn(Optional.of(game));
+
+        //when
+        Throwable thrown = catchThrowable(() -> {
+            gameService.makeMove(uuid, inputPitId);
+        });
+
+        //then
+        assertThat(thrown)
+                .isInstanceOf(BusinessException.class)
+                .hasMessageContaining("turn");
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {6,13})
+    void makeMoveKalahPitTest(int inputPit) {
+        //given
+        UUID uuid = game.getGameId();
+        Integer pitId = inputPit;
+        when(gameRepository.findById(any(UUID.class))).thenReturn(Optional.of(game));
+
+        //when
+        Throwable thrown = catchThrowable(() -> {
+            gameService.makeMove(uuid,pitId);
+        });
+
+        //then
+        assertThat(thrown)
+                .isInstanceOf(BusinessException.class)
+                .hasMessageContaining("kalah");
+    }
+
+    private static Stream<Arguments> provideSomePlayConsecutiveMoves() {
         return Stream.of(
                 Arguments.of(0, new Integer[]{0,7,7,7,7,7,1, 6,6,6,6,6,6,0},PLAYER1),
                 Arguments.of(1, new Integer[]{0,0,8,8,8,8,2, 7,7,6,6,6,6,0},PLAYER2),
@@ -130,6 +175,18 @@ class GameServiceImplTest {
 
         );
     }
+
+    private static Stream<Arguments> provideSomeWrongTurnParams() {
+        return Stream.of(
+                Arguments.of(new Integer[]{6,6,6,6,6,6,0, 6,6,6,6,6,6,0},PLAYER1,7),
+                Arguments.of(new Integer[]{0,7,7,7,7,7,1, 6,6,6,6,6,6,0},PLAYER1,8),
+                Arguments.of(new Integer[]{0,0,8,8,8,8,2, 7,7,6,6,6,6,0},PLAYER2,0),
+                Arguments.of(new Integer[]{1,0,8,8,8,8,2, 0,8,7,7,7,7,1},PLAYER1,12)
+
+        );
+    }
+
+
 
     private static String[] pitsToStringArray(Integer[] pits){
         String[] result = new String[pits.length];
