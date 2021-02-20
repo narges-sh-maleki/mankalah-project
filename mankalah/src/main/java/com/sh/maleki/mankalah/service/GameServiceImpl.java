@@ -73,13 +73,13 @@ public class GameServiceImpl implements GameService {
 
         if (!game.getGameWinner().equals(GameWinner.UNKNOWN))
             throw new BusinessException(ExceptionCodes.INVALID_GAME, "Game Winner: " + game.getGameWinner().toString());
+        if (isKalahPit(pitId))
+            throw new BusinessException(ExceptionCodes.KALAH_PIT,"Pit Id: " + pitId.toString());
         if (!isCurrPlayerPit(turn, pitId))
             throw new BusinessException(ExceptionCodes.WRONG_TURN,
                     Arrays.asList("Pit Id: " + pitId.toString(), "Turn: " + game.getTurn()));
         if (isEmptyPit(pitId, pits))
             throw new BusinessException(ExceptionCodes.EMPTY_PIT,"Pit Id: " + pitId.toString());
-        if (isKalahPit(pitId))
-            throw new BusinessException(ExceptionCodes.KALAH_PIT,"Pit Id: " + pitId.toString());
 
         log.debug("****************Before Move: " + Arrays.toString(pits));
         log.debug("****************Current Turn: " + turn);
@@ -113,9 +113,7 @@ public class GameServiceImpl implements GameService {
         Game savedGame = gameRepository.save(game);
         return gameMapper.GameToGameDto(savedGame);
 
-   //     gameRepository.save(game);
-   //     return gameMapper.GameToGameDto(game);
-    }
+      }
 
     private Boolean isGameOver(Integer[] pits) {
         boolean firstSideEmpty = IntStream.range(0, kalah1 - 1).allMatch(idx -> pits[idx].equals(0));
