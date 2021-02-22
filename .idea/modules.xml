@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mankala-domain/mankala-domain.iml" filepath="$PROJECT_DIR$/mankala-domain/mankala-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mankala-project.iml" filepath="$PROJECT_DIR$/mankala-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mankalah/mankalah.iml" filepath="$PROJECT_DIR$/mankalah/mankalah.iml" />
+    </modules>
+  </component>
+</project>
