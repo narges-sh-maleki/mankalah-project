@@ -1,7 +1,6 @@
-
 [![CircleCI](https://circleci.com/gh/narges-sh-maleki/mankalah-project.svg?style=svg)](https://circleci.com/gh/narges-sh-maleki/mankalah-project)
 
- #Mankalah Project
+ # Mankalah Project
 
 A Java RESTful Web Service that runs a game of 6-stone Kalah.
 The application is developed by JAVA 11, the latest version of Spring Boot and Spring Data JPA.
@@ -12,7 +11,7 @@ H2 Database is considered as a development DB, but there is possibility to chang
 
 The project includes unit tests developed by Junit 5 and Mockito, and Integration Tests.
 
-##How to run
+## How to run
 *1. Build the project using the below command:*
 
     mvn clean install 
