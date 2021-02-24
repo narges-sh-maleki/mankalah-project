@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="264aa1cd-9ae5-4782-8420-628537822e12" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mankalah/src/test/java/com/sh/maleki/mankalah/web/controller/GameControllerIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mankalah/src/main/java/com/sh/maleki/mankalah/config/ShowActiveProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mankalah/src/main/resources/application-prod.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mankalah/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mankalah/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mankala-domain/target/mankala-domain-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mankala-domain/target/mankala-domain-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mankala-domain/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mankala-domain/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mankalah/.run/MankalahApplication.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mankalah/.run/MankalahApplication.run.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mankalah/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/mankalah/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mankalah/src/main/java/com/sh/maleki/mankalah/MankalahApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/mankalah/src/main/java/com/sh/maleki/mankalah/MankalahApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mankalah/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mankalah/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mankalah/src/test/java/com/sh/maleki/mankalah/service/GameServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/mankalah/src/test/java/com/sh/maleki/mankalah/service/GameServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,17 +39,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mankalah/src/main/resources" />
   </component>
-  <component name="RunManager" selected="JUnit.GameControllerIT">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mosta\OneDrive\Desktop\Narges\mankala-project\mankalah\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MankalahApplication">
     <configuration name="GameControllerIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mankalah" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sh.maleki.mankalah.web.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <option name="PACKAGE_NAME" value="com.sh.maleki.mankalah.web.controller" />
       <option name="MAIN_CLASS_NAME" value="com.sh.maleki.mankalah.web.controller.GameControllerIT" />
       <option name="TEST_OBJECT" value="class" />

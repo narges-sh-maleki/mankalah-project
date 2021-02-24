@@ -57,13 +57,10 @@ class GameServiceImplTest {
    // GameMapper localMapper = Mappers.getMapper(GameMapper.class);
 
     private static GameDto gameDto;
-
     private static Game game;
 
     private static  Integer kalah1 = 6 ;
-
     private  static Integer kalah2 = 13 ;
-
     private static Integer stones = 6;
 
     @BeforeAll
@@ -95,8 +92,7 @@ class GameServiceImplTest {
 
         //then
         assertThat(game).isNotNull();
-        //TODO: convert Enum in DTO and Domain layer to each other
-        //assertThat(game.getTurn()).isEqualTo(PLAYER);
+
     }
 
 

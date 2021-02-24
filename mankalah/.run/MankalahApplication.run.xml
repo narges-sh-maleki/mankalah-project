@@ -2,9 +2,8 @@
   <configuration default="false" name="MankalahApplication" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="com.sh.maleki.mankalah.MankalahApplication" />
     <module name="mankalah" />
-    <option name="VM_PARAMETERS" value="-Dspring.profiles.active=dev" />
     <method v="2">
-      <option name="Make" enabled="true" />
+      <option name="MakeProject" enabled="true" />
     </method>
   </configuration>
 </component>
